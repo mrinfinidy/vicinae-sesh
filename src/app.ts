@@ -1,4 +1,3 @@
-import { getPreferenceValues } from "@raycast/api";
 import { exec } from "child_process";
 import { getEnv } from "./env";
 
