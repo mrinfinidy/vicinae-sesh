@@ -1,11 +1,12 @@
 import { exec } from "child_process";
-import { getEnv } from "./env";
+// import { getEnv } from "./env";
 import { readFileSync } from "fs";
 import { homedir } from "os";
 import { join } from "path";
 import * as toml from "toml";
 
-const env = getEnv();
+// const env = getEnv();
+const env = null;
 
 export interface Session {
   Src: string; // tmux or zoxide
@@ -70,7 +71,9 @@ export function shouldFocusSession(sessionName: string): boolean {
 
     // Check if there's a session configuration with focus = true
     if (config.session && Array.isArray(config.session)) {
-      const sessionConfig = config.session.find((s: SessionConfig) => s.name === sessionName);
+      const sessionConfig = config.session.find(
+        (s: SessionConfig) => s.name === sessionName,
+      );
       return sessionConfig?.focus === true;
     }
 
