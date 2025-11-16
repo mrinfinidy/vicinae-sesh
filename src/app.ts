@@ -1,9 +1,8 @@
 import { getPreferenceValues } from "@raycast/api";
 import { exec } from "child_process";
-// import { getEnv } from "./env";
+import { getEnv } from "./env";
 
-// const env = getEnv();
-const env = null;
+const env = getEnv();
 
 export function openApp() {
   return new Promise<void>((resolve, reject) => {

@@ -1,12 +1,11 @@
 import { exec } from "child_process";
-// import { getEnv } from "./env";
+import { getEnv } from "./env";
 import { readFileSync } from "fs";
 import { homedir } from "os";
 import { join } from "path";
 import * as toml from "toml";
 
-// const env = getEnv();
-const env = null;
+const env = getEnv();
 
 export interface Session {
   Src: string; // tmux or zoxide
