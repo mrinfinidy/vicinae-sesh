@@ -86,21 +86,22 @@ export function shouldFocusSession(sessionName: string): boolean {
 }
 
 export function isTmuxRunning(): Promise<boolean> {
-  return new Promise<boolean>((resolve) => {
-    const fullEnv = {
-      ...process.env,
-      PATH: env.PATH,
-    };
+  // return new Promise<boolean>((resolve) => {
+  //   const fullEnv = {
+  //     ...process.env,
+  //     PATH: env.PATH,
+  //   };
 
-    exec("tmux ls", { env: fullEnv }, (error, _, stderr) => {
-      // tmux not installed or other fatal error
-      if (error && !/no server running/.test(stderr)) {
-        resolve(false);
-        return;
-      }
+  //   exec("tmux ls", { env: fullEnv }, (error, _, stderr) => {
+  //     // tmux not installed or other fatal error
+  //     if (error && !/no server running/.test(stderr)) {
+  //       resolve(false);
+  //       return;
+  //     }
 
-      // tmux installed, may or may not have sessions
-      resolve(true);
-    });
-  });
+  //     // tmux installed, may or may not have sessions
+  //     resolve(true);
+  //   });
+  // });
+  return Promise.resolve(true);
 }
