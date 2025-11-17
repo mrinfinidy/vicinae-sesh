@@ -3,7 +3,7 @@
   "name": "sesh",
   "title": "Sesh",
   "description": "Smart, instant terminal session management.",
-  "icon": "command-icon.png",
+  "icon": "session.png",
   "author": "joshmedeski",
   "contributors": [
     "sebastian_gunnarsson",
@@ -20,7 +20,7 @@
       "title": "Connect to Session",
       "subtitle": "Sesh",
       "description": "Smart terminal session manager.",
-      "icon": "command-icon.png",
+      "icon": "session.png",
       "mode": "view",
       "preferences": [
         {
