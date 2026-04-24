@@ -1,26 +1,25 @@
 import { exec } from "child_process";
+import { getPreferenceValues } from "@raycast/api";
 import { getEnv } from "./env";
 
 const env = getEnv();
 
+interface Preferences {
+  windowClass: string;
+}
+
 export function openApp() {
+  const { windowClass } = getPreferenceValues<Preferences>();
   return new Promise<void>((resolve, reject) => {
-    // Use Hyprland CLI to focus WezTerm window
     exec(
-      `hyprctl dispatch focuswindow class:me.mloeper.wezterm_tmux_main`,
+      `hyprctl dispatch focuswindow class:${windowClass}`,
       { env },
       (error, _, stderr) => {
         if (error || stderr) {
-          console.error(
-            "Failed to focus WezTerm window:",
-            error?.message ?? stderr,
-          );
-          // Fallback: try to launch WezTerm if focus fails
-          exec(`wezterm`, { env }, (fallbackError, _, fallbackStderr) => {
+          console.error("Failed to focus terminal window:", error?.message ?? stderr);
+          exec(windowClass, { env }, (fallbackError, _, fallbackStderr) => {
             if (fallbackError || fallbackStderr) {
-              return reject(
-                `Failed to focus or launch WezTerm: ${error?.message ?? stderr}`,
-              );
+              return reject(`Failed to focus or launch ${windowClass}: ${error?.message ?? stderr}`);
             }
             return resolve();
           });
