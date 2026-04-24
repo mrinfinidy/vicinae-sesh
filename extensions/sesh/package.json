@@ -24,12 +24,12 @@
       "mode": "view",
       "preferences": [
         {
-          "name": "openWithApp",
-          "type": "appPicker",
+          "name": "windowClass",
+          "type": "textfield",
           "required": true,
-          "title": "Open with (required)",
-          "description": "Open with",
-          "default": "Terminal"
+          "title": "Terminal window class",
+          "description": "Hyprland window class used to focus the terminal (e.g. kitty, Alacritty, org.wezfurlong.wezterm)",
+          "default": "kitty"
         },
         {
           "name": "environmentPath",
